@@ -14,6 +14,6 @@ func StartService() {
 
 	service.POST("/createWallet", wallet.CreateWallet)
 	service.POST("/deployContract", contract.DeployContract) // Buraya contract.go üzerinde yazılan methodlar gelecek deploy transfer vs
-
+	//service.POST("/transfer",contract.Transfer)
 	service.Run()
 }

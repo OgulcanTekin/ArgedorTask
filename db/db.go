@@ -11,10 +11,17 @@ import (
 )
 
 func setupTables(db *pg.DB) {
+	contractModalErr := db.Model(&walletmodal.Contract{}).CreateTable(&orm.CreateTableOptions{
+		IfNotExists: true,
+	})
+
 	walletModalErr := db.Model(&walletmodal.Wallet{}).CreateTable(&orm.CreateTableOptions{
 		IfNotExists: true,
 	})
 
+	if contractModalErr != nil {
+		panic(contractModalErr)
+	}
 	if walletModalErr != nil {
 		panic(walletModalErr)
 	}
